@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revelación de Icono</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 50px;
+            font-weight: bold;
+            opacity: 0;
+            filter: drop-shadow(0 0 15px gold);
+            animation: none;
+        }
+        .light-effects {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+        .light {
+            position: absolute;
+            width: 5px;
+            height: 80px;
+            background: linear-gradient(to top, rgba(255, 140, 0, 1), rgba(255, 255, 0, 0));
+            opacity: 0.9;
+            transform-origin: center;
+            animation: flameEffect 1.2s ease-in-out infinite alternate, lightSpin 1.5s ease-in-out forwards;
+        }
+        .pulse-ring {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 0, 0.7);
+            animation: pulseExpand 2s infinite;
+        }
+        @keyframes fadeInScale {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1.8); }
+        }
+        @keyframes lightSpin {
+            0% { transform: rotate(0deg) scaleY(0); opacity: 1; }
+            100% { transform: rotate(360deg) scaleY(2); opacity: 0; }
+        }
+        @keyframes glowEffect {
+            0% { filter: drop-shadow(0 0 10px gold); }
+            100% { filter: drop-shadow(0 0 25px orange); }
+        }
+        @keyframes pulseExpand {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+        @keyframes flameEffect {
+            0% { transform: translateY(0) scaleY(1); opacity: 1; }
+            100% { transform: translateY(-20px) scaleY(1.5); opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="effect">
+        <div class="light-effects" id="lightEffects"></div>
+        <div class="content" id="content">🎉</div>
+    </div>
+    <button onclick="revealIcon()" style="position: absolute; top: 20px;">Revelar</button>
+    
+    <script>
+        function revealIcon() {
+            const content = document.getElementById('content');
+            const lightEffects = document.getElementById('lightEffects');
+            const surprises = ['🎉', '🎁', '💎', '🎮', '🔥', '✨'];
+            const randomSurprise = surprises[Math.floor(Math.random() * surprises.length)];
+            content.textContent = randomSurprise;
+            
+            
+            // Crear efectos de luz animados
+            lightEffects.innerHTML = '';
+            for (let i = 0; i < 10; i++) {
+                let light = document.createElement('div');
+                light.classList.add('light');
+                light.style.top = '50%';
+                light.style.left = '50%';
+                light.style.transform = `rotate(${i * 36}deg)`;
+                light.style.animationDelay = Math.random() * 0.5 + 's';
+                lightEffects.appendChild(light);
+            }
+            
+            // Crear anillos pulsantes
+            for (let i = 0; i < 3; i++) {
+                let ring = document.createElement('div');
+                ring.classList.add('pulse-ring');
+                ring.style.position = 'absolute';
+                ring.style.top = '50%';
+                ring.style.left = '50%';
+                ring.style.transform = 'translate(-50%, -50%)';
+                ring.style.animationDelay = i * 0.5 + 's';
+                lightEffects.appendChild(ring);
+            }
+            
+            // Esperar a que termine la animación de luces antes de mostrar el icono
+            setTimeout(() => {
+                
+                content.style.animation = 'fadeInScale 2s ease-in-out forwards, glowEffect 1.5s infinite alternate';
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

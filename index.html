@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego Místico de los Números</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body style="background-color: black;">
+    <img src="5556.png" class="floating-image image1">
+    <img src="888.png" class="floating-image image2">
+    <img src="555.png" class="floating-image image3">
+
+    <img src="UTE-LVT-LOGO2.png" alt="" width="85px" id="logo-utlvte" class="">
+    <h1>LEO TU MENTE</h1>
+    <div class="container" id="step1">
+        <h1>Piensa en un número de dos cifras</h1>
+        <button class="button" onclick="siguiente()">Siguiente</button>
+    </div>
+    
+    
+    
+    <script>
+        function siguiente() {
+            window.location.href = "./dos.html";     
+        }
+        
+        function generateSymbolList() {
+            const symbols = ["🔮", "☠", "✡", "☯", "🜏", "🦉", "🦇", "♆", "🜃", "☾"];
+            let list = "";
+            for (let i = 9; i <= 81; i += 9) {
+                list += `<p>${i} → ${symbols[i % symbols.length]}</p>`;
+            }
+            document.getElementById("symbolList").innerHTML = list;
+        }
+        
+        function revealSymbol() {
+            const symbolElement = document.getElementById("symbol");
+            symbolElement.textContent = "🔮"; // Se asegura de mostrar el correcto
+            symbolElement.classList.add("show-symbol");
+        }
+
+        let num2 = Math.floor(Math.random() * 16) + 1;
+        for(var i=0; i<101; i++){
+            let num = Math.floor(Math.random() * 16) + 1;
+
+            console.log(i+" "+num);
+            if(num == 1 || num == 3 || num == 5 || num == 7 ){
+                document.getElementById("sim_"+i).src = "./SVG/"+num+".png";
+            }else{              
+                document.getElementById("sim_"+i).src = "./SVG/"+num+".svg";
+            }
+            if(i % 9 == 0){
+                document.getElementById("sim_"+i).src = "./SVG/"+num2+".svg";
+            }
+
+
+        }
+    </script>
+</body>
+</html>

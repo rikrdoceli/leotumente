@@ -1,0 +1,151 @@
+body {
+    background-color: black;
+    background: url('444.jpg') no-repeat center center fixed;
+    
+    background-size: cover;
+    color: #c0a080;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    padding: 20px;
+    /*overflow: hidden;*/
+    background-blend-mode: lighten;
+}
+
+
+
+.container {
+    max-width: 80%;
+    margin: auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 1);
+    border-radius: 10px;
+    box-shadow: 0 0 15px #c0a080;
+    position: relative;
+    z-index: 2;
+}
+#logo-utlvte{
+    border-radius: 45px;
+    box-shadow: 0 0 15px #c0a080;
+    position: relative;
+    z-index: 3;
+    filter: brightness(0.7);
+}
+.hidden {
+    display: none;
+}
+.button {
+    background: #c0a080;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin-top: 20px;
+    transition: background 0.5s, transform 0.3s;
+}
+.button:hover {
+    background: #e0c090;
+    transform: scale(1.1);
+}
+@keyframes flicker {
+    0% { box-shadow: 0 0 15px #c0a080; }
+    50% { box-shadow: 0 0 25px #c0a080; }
+    100% { box-shadow: 0 0 15px #c0a080; }
+}
+.container {
+    animation: flicker 3s infinite;
+}
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+.floating-image {
+    position: absolute;
+    width: 140px;
+    opacity: 0.5;
+    animation: float 4s infinite ease-in-out;
+}
+.image1 { top: 10%; left: 5%; }
+.image2 { top: 50%; right: 10%; animation-delay: 1s; }
+.image3 { bottom: 10%; left: 5%; animation-delay: 2s; }
+
+
+.contenedor {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    height: 320px;
+    overflow: hidden;
+}
+
+.sub-contenedor {
+    position: relative;
+   
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 40%;
+    left: 50%;
+}
+
+.light-effects {
+    position: absolute;
+    
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+.light {
+    position: absolute;
+    width: 5px;
+    height: 80px;
+    background: linear-gradient(to top, rgba(255, 140, 0, 1), rgba(255, 255, 0, 0));
+    opacity: 0.9;
+    /* transform-origin: center; */
+    animation: flameEffect 1.2s ease-in-out infinite alternate, lightSpin 2.5s ease-in-out forwards;
+}
+.pulse-ring {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 0, 0.7);
+    animation: pulseExpand 2s infinite;
+}
+@keyframes fadeInScale {
+0% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1.8); }
+}
+@keyframes lightSpin {
+    0% { transform: rotate(0deg) scaleY(0); opacity: 1; }
+    100% { transform: rotate(360deg) scaleY(2); opacity: 0; }
+}
+@keyframes glowEffect {
+    0% { filter: drop-shadow(0 0 10px gold); }
+    100% { filter: drop-shadow(0 0 25px orange); }
+}
+@keyframes pulseExpand {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(2.5); opacity: 0; }
+}
+@keyframes flameEffect {
+    0% { transform: translateY(0) scaleY(1); opacity: 1; }
+    100% { transform: translateY(-20px) scaleY(1.5); opacity: 0.5; }
+}
+
+.revel-image {
+    /* position: absolute; */
+    width: 80px;
+    
+    /* animation: float 4s infinite ease-in-out; */
+}
+
+.content{
+   
+   
+    width: 80px;
+    height: 80px;
+}

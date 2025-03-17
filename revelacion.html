@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego Místico de los Números</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body style="background-color: black;">
+    <img src="5556.png" class="floating-image image1">
+    <img src="888.png" class="floating-image image2">
+    <img src="555.png" class="floating-image image3">
+
+    <img src="UTE-LVT-LOGO2.png" alt="" width="85px" id="logo-utlvte" class="">
+    <h1>LEO TU MENTE</h1>
+    
+    
+    <div class="container" id="step4">
+        <h1>Revelando el Símbolo...</h1>
+        
+        <div class="contenedor">
+            
+            <div class="sub-contenedor" id="effect">
+                <div class="light-effects" id="lightEffects"></div>
+                <div class="content" id="content">
+                     
+                </div>
+            </div>
+        
+        </div>
+         
+        
+        <button class="button" onclick="siguiente()">Revelar Símbolo</button>
+        <button class="button" onclick="repetir()">Repetir</button>
+    </div>
+    
+    <script>
+        const dato = localStorage.getItem("dato");
+        
+        function siguiente() {
+            window.location.href = "./revelacion.html";     
+        }
+        function repetir() {
+            window.location.href = "./index.html";     
+        }
+        
+        const content = document.getElementById('content');
+        const lightEffects = document.getElementById('lightEffects');
+        const surprises = ['🎉', '🎁', '💎', '🎮', '🔥', '✨'];
+        const randomSurprise = surprises[Math.floor(Math.random() * surprises.length)];
+        content.innerHTML = '';
+        
+
+        // Crear efectos de luz animados
+        lightEffects.innerHTML = '';
+        
+        
+        for (let i = 0; i < 10; i++) {
+            var light = document.createElement('div');    
+            light.classList.add('light');      
+            light.style.transform = `rotate(${i * 36}deg)`;
+            light.style.animationDelay = Math.random() * 0.5 + 's';
+            lightEffects.appendChild(light);
+            
+        }
+        
+        
+        // Crear anillos pulsantes
+        for (let i = 0; i < 3; i++) {
+            
+            let ring = document.createElement('div');
+            ring.classList.add('pulse-ring');
+            ring.style.position = 'absolute';
+           
+           
+            ring.style.animationDelay = i * 0.5 + 's';
+            lightEffects.appendChild(ring);
+        }
+        
+        
+        // Esperar a que termine la animación de luces antes de mostrar el icono
+        setTimeout(() => {
+            if(dato == 1 || dato == 3 || dato == 5 || dato == 7 ){
+                content.innerHTML = '<img src="./SVG/'+dato+'.png" class="revel-image">';           
+            }else{              
+                content.innerHTML = '<img src="./SVG/'+dato+'.svg" class="revel-image">';
+            }     
+            content.style.animation = 'fadeInScale 2s ease-in-out forwards, glowEffect 1.2s infinite alternate';
+        }, 1000);
+        
+
+        
+    </script>
+</body>
+</html>
